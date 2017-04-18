@@ -13,16 +13,16 @@ namespace SimpleBookStoreApi.Controllers
         // GET api/values
         public IEnumerable<Book> Get()
         {
-            using (var db = new BooksContext())
+            using (var db = new ApplicationDbContext())
             {
                 return db.Books.ToList();
             }
         }
         
         // GET api/values/5
-        public Book Get(int id)
+        public Book Get(Guid id)
         {
-            using (var db = new BooksContext())
+            using (var db = new ApplicationDbContext())
             {
                 return db.Books.FirstOrDefault(b => b.ID == id) ;
             }
@@ -31,7 +31,7 @@ namespace SimpleBookStoreApi.Controllers
         // POST api/values
         public void Post([FromBody]Book value)
         {
-            using (var db = new BooksContext())
+            using (var db = new ApplicationDbContext())
             {
                 db.Books.Add(value);
                 db.SaveChanges();
@@ -39,9 +39,9 @@ namespace SimpleBookStoreApi.Controllers
         }
         
         // PUT api/values/5
-        public void Put(int id, [FromBody]Book value)
+        public void Put(Guid id, [FromBody]Book value)
         {
-            using (var db = new BooksContext())
+            using (var db = new ApplicationDbContext())
             {
                 if (id == value.ID)
                 {
@@ -52,9 +52,9 @@ namespace SimpleBookStoreApi.Controllers
         }
         
         // DELETE api/values/5
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            using (var db = new BooksContext())
+            using (var db = new ApplicationDbContext())
             {
                 var bookForDelete = db.Books.FirstOrDefault(b => b.ID == id);
                 if (bookForDelete != null)
