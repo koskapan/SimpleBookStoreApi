@@ -22,5 +22,8 @@ namespace SimpleBookStoreApi.Models
 
         [JsonProperty("publicationYear")]
         public int PublicationYear { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public String ImageUrl { get; set; }
     }
 }
