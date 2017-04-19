@@ -35,6 +35,8 @@ namespace SimpleBookStoreApi.Controllers
         {
             using (var db = new ApplicationDbContext())
             {
+                var bookId = Guid.NewGuid();
+                value.ID = bookId;
                 db.Books.Add(value);
                 db.SaveChanges();
             }
